@@ -1,0 +1,26 @@
+name: Platform Apigee CI
+
+inputs:
+  image:
+    required: true
+
+runs:
+  using: composite
+  steps:
+    - uses: actions/checkout@v4
+
+    - run: |
+        docker run \
+          -e APIGEE_ENV \
+          -e APIGEE_ORG \
+          -e APIGEE_TOKEN \
+          -e SKIP_FORTIFY \
+          -e SKIP_DEPLOY \
+          -e GITHUB_REPOSITORY \
+          -e GITHUB_REF_NAME \
+          -e GITHUB_ACTOR \
+          -e GITHUB_SHA \
+          -v ${{ github.workspace }}:/workspace \
+          ${{ inputs.image }}
+      shell: bash
+

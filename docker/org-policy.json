@@ -1,0 +1,8 @@
+{
+  "forgecrux": {
+    "allowed_repos": ["payments-api", "orders-api"],
+    "allowed_envs": ["dev", "test", "prod"],
+    "prod_branch": "main"
+  }
+}
+
